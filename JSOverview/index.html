@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Overview</title>
+</head>
+<body>
+    <!-- Có 3 cách để nhưng mã JS vào trong HTML
+        cách 1 (inline): viết mã js trong sự kiện (event) của element (tag)
+        cách 2 (internal): viết mã js trong cặp thẻ script, và cặp thẻ này được trong trong file html
+        cách 3 (external): viết mã js trong file có mở phần mở rộng là js, và file này sẽ được nhúng
+        vào trong file html thông qua thẻ script
+     -->
+     <input type="password"> <button onclick="showPassword()">Show</button>
+     <br>
+     <input id="inp_1" type="text"> <button onclick="clearInput()">Clear</button>
+     <br>
+     <p id="p_1" style="color:red;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, vitae.</p>
+     <button onclick="document.getElementById('p_1').innerText = ''">Erase</button>
+     <button 
+        onmouseover="this.innerText = new Date()"
+        onmouseout="this.innerText = 'Hover to show current time'"
+     >Hover to show current time</button>
+     <br>
+     <button    
+        ondblclick="setDarkMode()"
+     >Dark mode</button>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, at!</p>
+     <button
+        onclick="document.getElementsByTagName('img')[0].style.width = '300px'"
+     >Zoom Out</button>
+     <img src="images/person_5.jpg" alt="" 
+        onmouseover="this.style.width = '300px'"
+        onmouseout="this.style.width = '190px'"
+     >
+     
+     <!-- <script>
+        function showPassword(){
+            if(document.getElementsByTagName('input')[0].type == 'password'){
+                document.getElementsByTagName('input')[0].type = 'text';
+                document.getElementsByTagName('button')[0].innerText = 'Hide';
+            }
+            else{
+                document.getElementsByTagName('input')[0].type = 'password';
+                document.getElementsByTagName('button')[0].innerText = 'Show';
+            }
+        }
+     </script> -->
+     <script src="site.js"></script>
+</body>
+</html>
