@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Datatype Operators</title>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>Toán</td>
+                <td><input type="number" id="toan"></td>
+            </tr>
+            <tr>
+                <td>Lý</td>
+                <td><input type="number" id="ly"></td>
+            </tr>
+            <tr>
+                <td>Hóa</td>
+                <td><input type="number" id="hoa"></td>
+            </tr>
+            <tr>
+                <td>Kết quả</td>
+                <td><input type="number" id="ketqua" readonly></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button onclick="process()">Tính toán</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        // let toan = +prompt("Nhập điểm toán");
+        // let ly =  parseFloat(prompt("Nhập điểm lý"));
+        // let hoa = Number(prompt("Nhập điểm hóa"));
+        // let dtb = (toan + ly + hoa)/3;
+        // alert(dtb);
+
+        function process(){
+            let toan = +document.getElementById('toan').value;
+            let ly = +document.getElementById('ly').value;
+            let hoa = +document.getElementById('hoa').value;
+            let dtb = (toan + ly + hoa)/3;
+            document.getElementById('ketqua').value = dtb;
+        }
+    </script>
+</body>
+</html>
