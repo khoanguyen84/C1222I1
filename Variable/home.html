@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải phương trình bậc 2</title>
+</head>
+
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>a</td>
+                <td><input type="number" id="a"></td>
+            </tr>
+            <tr>
+                <td>b</td>
+                <td><input type="number" id="b"></td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td><input type="number" id="c"></td>
+            </tr>
+            <tr>
+                <td>x1</td>
+                <td><input type="number" id="x1" readonly></td>
+            </tr>
+            <tr>
+                <td>x2</td>
+                <td><input type="number" id="x2" readonly></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button onclick="giaiPhuongTrinh()">Tính toán</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function giaiPhuongTrinh() {
+            let a = +document.getElementById('a').value;
+            let b = +document.getElementById('b').value;
+            let c = +document.getElementById('c').value;
+            if (a == 0) {
+                alert("a phải khác không");
+            } else {
+                let delta = b * b - 4 * a * c;
+                if (delta < 0) {
+                    document.getElementById('x1').type = "text"
+                    document.getElementById('x1').value = "Phương trình vô nghiệm"
+                }
+                if (delta == 0) {
+                    let x = -b / (2 * a);
+                    document.getElementById('x1').value = x;
+                }
+                if (delta > 0) {
+                    let x1 = (-b - Math.sqrt(delta)) / (2 * a);
+                    let x2 = (-b + Math.sqrt(delta)) / (2 * a);
+                    document.getElementById('x1').value = x1;
+                    document.getElementById('x2').value = x2;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
