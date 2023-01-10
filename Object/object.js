@@ -11,3 +11,21 @@ let nhat_2 = ["Nhật", true, 20, "nhat@gmail.com", ["Đá banh", "Cầu lông"]
 console.log(nhat_2[2]);
 console.log(nhat["age"]);
 console.log(nhat.age);
+
+let products = [
+    {
+        name: "ip4",
+        manufactory: "china",
+        colors:["gray","gold","pink"]
+    },
+    {
+        name: "ip4",
+        manufactory: "china",
+        colors:["gray","gold","pink"]
+    },
+    {
+        name: "ip4",
+        manufactory: "china",
+        colors:["gray","gold","pink"]
+    }
+]
