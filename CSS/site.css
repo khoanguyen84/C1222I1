@@ -1,0 +1,19 @@
+.mouseover {
+    background-color: #04AA6D;
+    color: white;
+    display: inline-block;
+    padding: 2px 25px;
+    text-align: center;
+
+}
+
+.mouseover:hover {
+    background-color: #008CBA;
+}
+
+p {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
