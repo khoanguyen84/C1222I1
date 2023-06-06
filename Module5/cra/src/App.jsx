@@ -2,11 +2,7 @@ import React from 'react';
 import './App.css';
 import Banner from './components/layout/Banner';
 import Narbar from './components/layout/Narbar';
-import Main from './components/layout/Main';
-import Footer from './components/layout/Footer';
-import UseState from './components/LearningUseState/UseState';
-import TwoWayBinding from './components/LearningUseState/TwoWayBinding';
-import TwoWayBinding2 from './components/LearningUseState/TwoWayBinding2';
+import Index from './components/LearningUseState/Index';
 
 function App() {
   return (
@@ -16,7 +12,7 @@ function App() {
       <Main />
       <Footer /> */}
       {/* <UseState/> */}
-      <TwoWayBinding2/>
+      <Index/>
     </>
   );
 }
