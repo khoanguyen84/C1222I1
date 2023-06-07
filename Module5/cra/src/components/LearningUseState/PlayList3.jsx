@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ListItem from './ListItem';
 
 function PlayList3() {
     const [state, setState] = useState({
@@ -36,6 +37,15 @@ function PlayList3() {
         }
     }
 
+    const handleEdit = (newSongName, idx) => {
+        setState((prev) => {
+            prev.playlist[idx] = newSongName;
+            return {
+                ...prev
+            };
+        })
+    }
+
     const { playlist, songname } = state;
     return (
         <div>
@@ -44,7 +54,7 @@ function PlayList3() {
                 <label className="text-success">Song name</label>
                 <input type="text" className="form-control w-25 mx-2"
                     value={songname}
-                    onInput={(e) => setState({...state, songname: e.target.value})}
+                    onInput={(e) => setState({ ...state, songname: e.target.value })}
                 />
                 <button className="btn btn-sm btn-success" type="submit">
                     <i className="fa fa-plus me-2"></i>
@@ -56,14 +66,12 @@ function PlayList3() {
                 {
                     playlist.map(function (song, index) {
                         return (
-                            <li key={song} className="list-group-item bg-info text-white d-flex justify-content-between">
-                                {song}
-                                <span role="button" className="text-dark fw-bolder"
-                                    onClick={() => handleRemove(song)}
-                                >
-                                    <i className="fa fa-times"></i>
-                                </span>
-                            </li>
+                            <ListItem key={song}
+                                song={song}
+                                index={index}
+                                handleRemove={handleRemove}
+                                handleEdit={handleEdit}
+                            />
                         )
                     })
                 }
