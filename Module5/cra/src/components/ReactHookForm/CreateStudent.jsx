@@ -2,18 +2,40 @@ import React from "react";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import randomstring from "randomstring";
 
-const schema = yup.object({
-    name: yup.string().required('Name is mandatory').max(5, 'Name should contains maximuns 50 characters!')
-}).required();
+
+const schema = yup.object().shape({
+    name: yup.string().required('Name is mandatory').max(50, 'Name should contains maximuns 50 characters!'),
+    age: yup.number().positive().required().integer().min(18).max(50).typeError('Age is a required field'),
+    mark: yup.number().positive().required().max(10).typeError('Mark is a required field'),
+    city: yup.string().required(),
+    gender: yup.string()
+});
 
 function CreateStudent() {
 
-    const { register, handleSubmit, formState: { errors} } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     })
-    const handleOnSubmit = (data) => {
-        console.log(data);
+    const handleOnSubmit = async (data) => {
+        data = {
+            ...data,
+            id: randomstring.generate(10),
+            createdAt: (new Date).valueOf(),
+            updatedAt: (new Date).valueOf()
+        }
+        fetch('https://js-post-api.herokuapp.com/api/students', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(async (res) => {
+            let result = await res.json();
+            console.log(result);
+        })
     }
     return (
         <div className="container">
@@ -26,11 +48,13 @@ function CreateStudent() {
                     </div>
                     <div className="form-group col-sm-4">
                         <label className="form-label" htmlFor="">Age</label>
-                        <input type="number" className="form-control" name="age" />
+                        <input type="number" className="form-control" {...register('age')} />
+                        <span className="text-danger">{errors.age?.message}</span>
                     </div>
                     <div className="form-group col-sm-4">
                         <label className="form-label" htmlFor="">Mark</label>
-                        <input type="number" className="form-control" name="mark" />
+                        <input type="string" className="form-control" {...register('mark')} />
+                        <span className="text-danger">{errors.mark?.message}</span>
                     </div>
                 </div>
                 <div className="row">
@@ -38,18 +62,19 @@ function CreateStudent() {
                         <label className="form-label" htmlFor="">Gender</label>
                         <div>
                             <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="gender" />
+                                <input className="form-check-input" value={"male"} defaultChecked={true} type="radio" {...register('gender')} />
                                 <label className="form-check-label">Male</label>
                             </div>
                             <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="gender" />
+                                <input className="form-check-input" value={'female'} type="radio" {...register('gender')} />
                                 <label className="form-check-label">Female</label>
                             </div>
                         </div>
                     </div>
                     <div className="form-group col-sm-4">
                         <label className="form-label" htmlFor="">City</label>
-                        <input type="text" className="form-control" name="city" />
+                        <input type="text" className="form-control" {...register('city')} />
+                        <span className="text-danger">{errors.city?.message}</span>
                     </div>
                 </div>
                 <div className="row mt-3">
