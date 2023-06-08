@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Banner from './components/layout/Banner';
 import Narbar from './components/layout/Narbar';
-import Index from './components/LearningUseEffect/Index';
+import Index from './components/ReactHookForm/Index';
 
 function App() {
   return (
