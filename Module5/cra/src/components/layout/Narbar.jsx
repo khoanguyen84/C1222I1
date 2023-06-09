@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Narbar() {
     return (
@@ -6,16 +7,13 @@ function Narbar() {
             <div className="container-fluid">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link active" href="#">Active</a>
+                        <Link className="nav-link" to={'/'}>Home</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Link</a>
+                        <Link className="nav-link" to={'/post-list'}>Post List</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Link</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link disabled" href="#">Disabled</a>
+                        <Link className="nav-link" to={'/play-list'}>Playlist</Link>
                     </li>
                 </ul>
             </div>

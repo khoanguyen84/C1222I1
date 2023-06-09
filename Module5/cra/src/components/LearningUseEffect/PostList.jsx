@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Spinner from './Spinner';
+import { Link } from "react-router-dom";
 
 function PostList() {
     const [postList, setPostList] = useState([]);
@@ -54,16 +55,18 @@ function PostList() {
             </div>
             <div className="row">
                 {
-                    loading ? <Spinner/> :
+                    loading ? <Spinner /> :
                         (postList.map((post) => (
                             <div key={post.id} className="col-sm-6 mb-4">
                                 <div className="card">
                                     <img src={post.imageUrl} alt="" />
                                     <div className="card-body">
-                                        <h5 className="card-title">{post.title}</h5>
+                                        <Link to={`/post-detail/${post.id}`}>
+                                            <h5 className="card-title">{post.title}</h5>
+                                        </Link>
                                         <p className="card-text fst-italic">{post.description}</p>
                                         <p className="card-text fw-bold">Author: {post.author}</p>
-                                        <p className="card-text fst-italic">Date: {(new Date(1681016264413)).toLocaleDateString()}</p>
+                                        <p className="card-text fst-italic">Date: {(new Date(post.createAt)).toLocaleDateString()}</p>
                                     </div>
                                 </div>
                             </div>
