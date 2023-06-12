@@ -9,6 +9,7 @@ import Footer from './components/layout/Footer';
 import { Route, Routes } from 'react-router';
 import PostDetail from './components/LearningUseEffect/PostDetail';
 import NotFound from './components/layout/NotFound';
+import CreateStudent from './components/ReactHookForm/CreateStudent';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/post-list' element={<PostList/>}/>
         <Route path='/post-detail/:postid' element={<PostDetail/>}/>
         <Route path='/play-list' element={<PlayList/>}/>
+        <Route path='/student/create' element={<CreateStudent/>}/>
         <Route path='/*' element={<NotFound/>}/>
       </Routes>
       <Footer />

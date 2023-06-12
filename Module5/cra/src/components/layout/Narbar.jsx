@@ -15,6 +15,9 @@ function Narbar() {
                     <li className="nav-item">
                         <Link className="nav-link" to={'/play-list'}>Playlist</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={'/student/create'}>Create Student</Link>
+                    </li>
                 </ul>
             </div>
         </nav>
