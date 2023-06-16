@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import randomstring from "randomstring";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const schema = yup.object({
     name: yup.string().required().max(50),
@@ -37,7 +39,10 @@ function CreateStudent() {
         //     })
         await axios.post('https://js-post-api.herokuapp.com/api/students', data)
                 .then((res) => {
-                    console.log(res);
+                    toast.success('Student created success!', {
+                        position:'bottom-right',
+                        autoClose: 2000
+                    })
                     reset();
                 }) 
                 .catch((error) => {
@@ -103,9 +108,12 @@ function CreateStudent() {
                 </div>
                 <div className="mb-2">
                     <label htmlFor="" className="form-label"></label>
-                    <button type="submit" className="btn btn-dark btn-sm">
+                    <button type="submit" className="btn btn-danger btn-sm me-3">
                         <i className="fa fa-user-plus me-2"></i>Create
                     </button>
+                    <Link to={'/student/list'} className="btn btn-dark btn-sm">
+                        <i className="fa fa-arrow-left"></i>Back
+                    </Link>
                 </div>
             </form>
         </div>

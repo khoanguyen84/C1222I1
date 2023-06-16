@@ -9,11 +9,15 @@ import Footer from './components/layout/Footer';
 import { Route, Routes } from 'react-router';
 import PostDetail from './components/LearningUseEffect/PostDetail';
 import NotFound from './components/layout/NotFound';
+import StudentList from './components/ReactHookForm/StudentList';
 import CreateStudent from './components/ReactHookForm/CreateStudent';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
+      <ToastContainer/>
       <Banner />
       <Narbar />
       <Routes>
@@ -21,6 +25,7 @@ function App() {
         <Route path='/post-list' element={<PostList/>}/>
         <Route path='/post-detail/:postid' element={<PostDetail/>}/>
         <Route path='/play-list' element={<PlayList/>}/>
+        <Route path='/student/list' element={<StudentList/>}/>
         <Route path='/student/create' element={<CreateStudent/>}/>
         <Route path='/*' element={<NotFound/>}/>
       </Routes>
